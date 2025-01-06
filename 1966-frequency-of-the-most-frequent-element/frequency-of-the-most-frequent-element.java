@@ -12,7 +12,7 @@ class Solution {
     while(right < nums.length){
         long target = nums[right];
         curr += nums[right];
-        while((target*(right-left+1)) - curr > k){
+        while((target*(right-left+1)) > curr + k){
             curr -= nums[left];
             left++;
         }
