@@ -1,6 +1,7 @@
 class Solution {
     public int jump(int[] nums) {
-        return greedy(nums);
+        // return greedy(nums);
+        return recursiveGreedy(nums, 0, 0, 0);
     }
 
     public int naive(int end, int idx, int jumps){
@@ -28,4 +29,18 @@ class Solution {
 
         return res;
     }
+
+    public int recursiveGreedy(int[] nums, int l, int r, int res) {
+    if (r >= nums.length - 1) {
+        return res; // Base case: If we've reached or exceeded the last index
+    }
+
+    int max = 0;
+    for (int i = l; i <= r; i++) {
+        max = Math.max(nums[i] + i, max); // Calculate the farthest reach
+    }
+
+    // Recursive call with updated range and incremented result
+    return recursiveGreedy(nums, r + 1, max, res + 1);
+}
 }
