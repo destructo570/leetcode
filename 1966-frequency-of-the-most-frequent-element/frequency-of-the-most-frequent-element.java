@@ -5,32 +5,34 @@ class Solution {
 
     public int maxFreqOpt(int[] nums, int k) {
     int left = 0;
+    int right = 0;
     long curr = 0;
-    int ans=0;
+    int ans = 0;
     Arrays.sort(nums);
-    // while(right < nums.length){
-    //     total += nums[right];
-    //     while(nums[right]*(right-left+1) - total > k){
-    //         total -= nums[left];
-    //         left++;
-    //     }
-    //     ans=Math.max(ans, right-left+1);
-    //     right++;
-    // }
-
-    for (int right = 0; right < nums.length; right++) {
-            long target = nums[right];
-            curr += target;
-            
-            while ((right - left + 1) * target - curr > k) {
-                curr -= nums[left];
-                left++;
-            }
-            
-            ans = Math.max(ans, right - left + 1);
+    while(right < nums.length){
+        long target = nums[right];
+        curr += nums[right];
+        while((target*(right-left+1)) - curr > k){
+            curr -= nums[left];
+            left++;
         }
+        ans=Math.max(ans, right-left+1);
+        right++;
+    }
 
-    return ans;
+    // for (int right = 0; right < nums.length; right++) {
+    //         long target = nums[right];
+    //         curr += target;
+            
+    //         while ((nums[right]*(right-left+1)) > curr + k) {
+    //             curr -= nums[left];
+    //             left++;
+    //         }
+            
+    //         ans = Math.max(ans, right - left + 1);
+    //     }
+
+    return (int)ans;
 }
 
     public int maxFreqNaive(int[] nums, int k){
