@@ -1,44 +1,38 @@
 class Solution {
-public int[] sortArray(int[] nums) {
-         mergesort(nums,0,nums.length-1);
-         return nums;
+    public int[] sortArray(int[] nums) {
+        mergeSort(nums, 0, nums.length-1);
+        return nums;
    }
-   public void mergesort(int nums[],int low,int high){
-    if(low == high){
-        return;
-    }
 
-    int middle=(low+high)/2;
-    mergesort(nums,low,middle);
-    mergesort(nums,middle+1,high);
-    merge(nums,low,middle,high);
-   }
-   public void merge(int[] nums,int low,int middle,int high){
-    int left=low;
-    int right=middle+1;
-    List<Integer> temp=new ArrayList<>();
-    while(left <= middle && right <= high){
-        if(nums[left] <= nums[right]){
-            temp.add(nums[left]);
-            left++;
-        }
-        else{
-            temp.add(nums[right]);
-            right++;
+   public void mergeSort(int arr[], int l, int r) {
+        if(l<r){
+            int mid = (l+r)/2;
+            
+            mergeSort(arr, l, mid);
+            mergeSort(arr, mid+1, r);
+            merge(arr, mid, l, r);
         }
     }
-    while(left <= middle){
-        temp.add(nums[left]);
-        left++;
-    }
-    while(right <= high){
-        temp.add(nums[right]);
-        right++;
-    }
 
-    for(int i=low;i<=high;i++){
-        nums[i] =temp.get(i-low);
-    }
+    public void merge(int[] arr, int mid, int l, int h){
+        int l1 = l;
+        int l2 = mid+1;
+        ArrayList<Integer> temp = new ArrayList<>();
+        while(l1 <= mid && l2 <= h){
+            if(arr[l1] <= arr[l2] ) {
+                temp.add(arr[l1++]);
+            }else {
+                temp.add(arr[l2++]);
+            };
+        }
+        
+        
+        while(l1 <= mid) temp.add(arr[l1++]);
+        while(l2 <= h) temp.add(arr[l2++]);
+        
+        for(int i=l;i<=h;i++){
+            arr[i] = temp.get(i-l);
+        }
 
-   }
+    }
 }
