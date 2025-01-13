@@ -15,7 +15,7 @@ class Solution {
             }
         }
 
-        return majorityElementTwo(nums);
+        return candidate;
     }
 
     public int majorityElementTwo(int[] nums) {
