@@ -6,10 +6,9 @@ class Solution {
             if(nums[i] > nums[i+1]){
                 count++;
             }
-            if(count > 1) return false;
         }
         
-        return true;
+        return count <= 1;
     }
     public boolean checkOne(int[] nums) {
         int index = -1;
