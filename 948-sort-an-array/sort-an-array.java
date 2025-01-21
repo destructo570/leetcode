@@ -20,7 +20,7 @@ class Solution {
         ArrayList<Integer> result = new ArrayList<>();
 
         while(l1 <= mid && l2 <= high){
-            if(nums[l1] <= nums[l2]){
+            if(nums[l1] < nums[l2]){
                 result.add(nums[l1++]);
             }else{
                 result.add(nums[l2++]);
