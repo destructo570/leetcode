@@ -3,9 +3,7 @@ class Solution {
         int count = 0;
         if(nums[0] < nums[nums.length-1]) count++;
         for(int i=0; i<nums.length-1; i++){
-            if(nums[i] > nums[i+1]){
-                count++;
-            }
+            if(nums[i] > nums[i+1]) count++;
         }
         
         return count <= 1;
