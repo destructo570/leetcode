@@ -3,14 +3,13 @@ class Solution {
         return naive(nums);
     }
     public int naive(int[] nums) {
-        int max=1;
         int n = nums.length;
-        Arrays.sort(nums);
-
-        int count=1;
         if(n == 0) return 0;
-        for(int i=1; i<nums.length; i++){
-            if(nums[i] == nums[i-1])continue;
+        int max=1;
+        int count=1;
+        Arrays.sort(nums);
+        for(int i=1; i<n; i++){
+            if(nums[i] == nums[i-1]) continue;
             if(nums[i] == nums[i-1]+1){
                 count++;
             }else{
