@@ -7,7 +7,7 @@ class Solution {
         int max = 0;
         int currMin=prices[0];
         int n=prices.length;
-        for(int i=0; i<n; i++){
+        for(int i=1; i<n; i++){
             currMin = Math.min(currMin, prices[i]);
             max = Math.max(max, prices[i]-currMin); 
         }
