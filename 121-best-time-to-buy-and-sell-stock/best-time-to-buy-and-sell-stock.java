@@ -1,13 +1,30 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int lsf = prices[0];
-        int maxprofit = 0;
+        return maxProfitOpt1(prices);
+    }
 
-        for(int i=0; i<prices.length ; i++){
-            maxprofit = Math.max(prices[i]-lsf, maxprofit);
-            lsf = Math.min(lsf, prices[i]);
+    public int maxProfitOpt1(int[] prices) {
+        int max = 0;
+        int currMin=prices[0];
+        int n=prices.length;
+        for(int i=0; i<n; i++){
+            currMin = Math.min(currMin, prices[i]);
+            max = Math.max(max, prices[i]-currMin); 
         }
 
-        return maxprofit;
+        return max;
+    }
+
+    public int maxProfitNaive(int[] prices) {
+        int max = 0;
+        
+        int n=prices.length;
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                max = Math.max(max, prices[j]-prices[i]);        
+            }   
+        }
+
+        return max;
     }
 }
