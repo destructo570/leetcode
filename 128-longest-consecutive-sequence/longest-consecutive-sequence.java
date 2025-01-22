@@ -4,12 +4,11 @@ class Solution {
     }
     public int naive(int[] nums) {
         int max=1;
-
+        int n = nums.length;
         Arrays.sort(nums);
 
         int count=1;
-        if(nums.length == 1) return 1;
-        if(nums.length == 0) return 0;
+        if(n == 0) return 0;
         for(int i=1; i<nums.length; i++){
             if(nums[i] == nums[i-1])continue;
             if(nums[i] == nums[i-1]+1){
