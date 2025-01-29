@@ -5,23 +5,20 @@ class Solution {
 
     public int majorityElement1(int[] nums) {
         HashMap<Integer, Integer> hm = new HashMap<>();
-        int ans=-1;
-        int ansOccur=0;
-        for(int i=0; i<nums.length; i++){
-            hm.put(nums[i], hm.getOrDefault(nums[i], 0)+1);
-        }
+        int ans=Integer.MAX_VALUE;
+        int freq=0;
+        for(int num:nums){
+            if(num % 2 == 0){
+                int currFreq = hm.getOrDefault(num, 0)+1;
+                hm.put(num, currFreq);
 
-        for(Map.Entry<Integer, Integer> entry: hm.entrySet()){
-            if(entry.getKey() % 2 == 0){
-                if(entry.getValue() > ansOccur){
-                    ans = entry.getKey();
-                    ansOccur = entry.getValue();
-                }else if(entry.getValue() == hm.get(ans) && entry.getKey() < ans){
-                    ans = entry.getKey();
+                if(currFreq>freq || (currFreq == freq && num<ans)){
+                    freq=currFreq;
+                    ans=num;
                 }
             }
         }
 
-        return ans;
+        return freq == 0 ? -1 : ans;
     }
 }
