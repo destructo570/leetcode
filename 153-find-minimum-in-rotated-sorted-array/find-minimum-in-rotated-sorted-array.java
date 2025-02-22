@@ -13,7 +13,6 @@ class Solution {
             }else{
                 min = Math.min(num, min);
                 r=mid-1;
-                
             }
         }
 
