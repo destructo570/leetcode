@@ -13,7 +13,7 @@ class Solution {
         int c=matrix[0].length;
         for(int i=0; i<r; i++){
             for(int j=0; j<c; j++){
-                if(i>j){
+                if(i<j){
                     int tmp = matrix[i][j];
                     matrix[i][j]=matrix[j][i];
                     matrix[j][i]=tmp;
