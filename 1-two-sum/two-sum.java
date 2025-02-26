@@ -6,7 +6,7 @@ class Solution {
             if(hm.containsKey(diff)){
                 return new int[] {i, hm.get(diff)};
             }
-            hm.put(nums[i], i);
+            hm.put(nums[i], i );
         }
         return new int[2];
     }
